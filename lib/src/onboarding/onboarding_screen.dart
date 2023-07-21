@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_clone/src/auth/sign_in_screen.dart';
 import 'package:nectar_clone/src/widgets/widgets.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -43,7 +44,14 @@ class OnboardingScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 40),
                     ReusablePrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) => const SignInScreen(),
+                          ),
+                          (route) => false,
+                        );
+                      },
                       title: 'Get Started',
                     ),
                   ],
