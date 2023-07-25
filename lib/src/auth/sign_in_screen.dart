@@ -46,10 +46,9 @@ class SignInScreen extends StatelessWidget {
                     initialCountryCode: 'BD',
                     showDropdownIcon: false,
                     dropdownTextStyle: const TextStyle(fontSize: 18),
-                    decoration: const InputDecoration(
-                      counterText: '',
-                      contentPadding: EdgeInsets.symmetric(vertical: 14),
-                    ),
+                    decoration: const InputDecoration(counterText: ''),
+                    showCursor: false,
+                    keyboardType: TextInputType.none,
                     style: const TextStyle(fontSize: 18),
                   ),
                   const SizedBox(height: 40),
