@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nectar_clone/src/auth/phone_auth_screen.dart';
+import 'package:nectar_clone/src/location/location_screen.dart';
 import 'package:nectar_clone/src/utils/utils.dart';
 
 class PhoneVerificationScreen extends StatefulWidget {
@@ -95,7 +96,14 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
                 ),
               ),
               FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => const LocationScreen(),
+                    ),
+                    (route) => false,
+                  );
+                },
                 backgroundColor: const Color(AppColor.primaryButtonColor),
                 child: const Icon(Icons.chevron_right_rounded, size: 32),
               ),
