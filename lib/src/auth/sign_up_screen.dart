@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:nectar_clone/src/auth/sign_up_screen.dart';
 import 'package:nectar_clone/src/utils/utils.dart';
-import 'package:nectar_clone/src/widgets/reusable_primary_button.dart';
+import 'package:nectar_clone/src/widgets/widgets.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   bool _isPasswordVisible = true;
+  final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  bool _isValidEmail(String email) {
+    setState(() {});
+    return email.contains('@') && email.contains('.');
+  }
 
   void _toggleVisibility() {
     setState(() {
@@ -23,6 +28,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   void dispose() {
+    _usernameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -43,7 +49,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               const SizedBox(height: 100),
               const Text(
-                'Sign In',
+                'Sign Up',
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.w500,
@@ -52,7 +58,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               const SizedBox(height: 8),
               const Text(
-                'Enter your email and password',
+                'Enter your credentials to continue',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -61,6 +67,21 @@ class _SignInScreenState extends State<SignInScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 40),
+              const Text(
+                'Username',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Color(AppColor.secondaryTextColor),
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                controller: _usernameController,
+                keyboardType: TextInputType.emailAddress,
+                style: const TextStyle(fontSize: 18),
+              ),
+              const SizedBox(height: 30),
               const Text(
                 'Email',
                 style: TextStyle(
@@ -72,8 +93,17 @@ class _SignInScreenState extends State<SignInScreen> {
               const SizedBox(height: 10),
               TextFormField(
                 controller: _emailController,
+                onChanged: _isValidEmail,
                 keyboardType: TextInputType.emailAddress,
                 style: const TextStyle(fontSize: 18),
+                decoration: InputDecoration(
+                  suffixIcon: _isValidEmail(_emailController.text)
+                      ? const Icon(
+                          Icons.check_rounded,
+                          color: Color(AppColor.primaryColor),
+                        )
+                      : null,
+                ),
               ),
               const SizedBox(height: 30),
               const Text(
@@ -101,31 +131,59 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              Align(
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: () {},
-                  child: const Text(
-                    'Forgot Password?',
+              Wrap(
+                children: [
+                  const Text(
+                    'By continuing you agree to our ',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: Color(AppColor.primaryTextColor),
+                      color: Color(AppColor.secondaryTextColor),
                     ),
                   ),
-                ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: const Text(
+                      'Terms of Service ',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(AppColor.primaryColor),
+                      ),
+                    ),
+                  ),
+                  const Text(
+                    'and ',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Color(AppColor.secondaryTextColor),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: const Text(
+                      'Privacy Policy.',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Color(AppColor.primaryColor),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 30),
               ReusablePrimaryButton(
                 onPressed: () {},
-                title: 'Sign In',
+                title: 'Sign Up',
               ),
               const SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Don\'t have an account?',
+                    'Already have an account?',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
@@ -134,16 +192,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   const SizedBox(width: 4),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
-                        ),
-                        (route) => false,
-                      );
-                    },
+                    onTap: () {},
                     child: const Text(
-                      'Sign Up',
+                      'Sign In',
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
