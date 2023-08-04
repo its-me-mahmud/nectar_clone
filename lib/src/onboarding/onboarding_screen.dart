@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nectar_clone/src/auth/sign_in_screen.dart';
+import 'package:nectar_clone/src/auth/auth_screen.dart';
 import 'package:nectar_clone/src/widgets/widgets.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -46,7 +46,7 @@ class OnboardingScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
-                          builder: (context) => const SignInScreen(),
+                          builder: (context) => const AuthScreen(),
                         ),
                         (route) => false,
                       );
