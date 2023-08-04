@@ -6,15 +6,19 @@ class ReusableIconButton extends StatelessWidget {
     required this.onPressed,
     required this.title,
     this.width = 364,
-    required this.imageUrl,
+    this.imageUrl,
     required this.color,
+    this.showIcon = false,
+    this.icon,
   });
 
   final String title;
   final VoidCallback onPressed;
   final double width;
-  final String imageUrl;
+  final String? imageUrl;
   final int color;
+  final bool showIcon;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +37,9 @@ class ReusableIconButton extends StatelessWidget {
           ),
         ),
       ),
-      icon: Image.asset(imageUrl),
+      icon: showIcon
+          ? const Icon(Icons.email_outlined, size: 32)
+          : Image.asset(imageUrl!),
       label: Text(
         title,
         style: const TextStyle(

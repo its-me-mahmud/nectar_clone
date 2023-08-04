@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:nectar_clone/src/auth/phone_verification_screen.dart';
-import 'package:nectar_clone/src/auth/sign_in_screen.dart';
 import 'package:nectar_clone/src/utils/utils.dart';
 
 class PhoneAuthScreen extends StatelessWidget {
@@ -17,12 +16,7 @@ class PhoneAuthScreen extends StatelessWidget {
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           leading: IconButton(
             onPressed: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(
-                  builder: (context) => const SignInScreen(),
-                ),
-                (route) => false,
-              );
+              Navigator.of(context).pop();
             },
             icon: const Icon(
               Icons.chevron_left_rounded,
@@ -73,10 +67,10 @@ class PhoneAuthScreen extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => const PhoneVerificationScreen(),
               ),
-              (route) => false,
+              (route) => true,
             );
           },
-          backgroundColor: const Color(AppColor.primaryButtonColor),
+          backgroundColor: const Color(AppColor.primaryColor),
           child: const Icon(Icons.chevron_right_rounded, size: 32),
         ),
       ),

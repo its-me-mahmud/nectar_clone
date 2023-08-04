@@ -19,7 +19,7 @@ class ReusablePrimaryButton extends StatelessWidget {
       onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor: const MaterialStatePropertyAll(
-          Color(AppColor.primaryButtonColor),
+          Color(AppColor.primaryColor),
         ),
         fixedSize: MaterialStatePropertyAll(
           Size(width, 67),

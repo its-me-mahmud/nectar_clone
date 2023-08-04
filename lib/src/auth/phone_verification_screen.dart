@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nectar_clone/src/auth/phone_auth_screen.dart';
 import 'package:nectar_clone/src/location/location_screen.dart';
 import 'package:nectar_clone/src/utils/utils.dart';
 
@@ -31,12 +30,7 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           leading: IconButton(
             onPressed: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(
-                  builder: (context) => const PhoneAuthScreen(),
-                ),
-                (route) => false,
-              );
+              Navigator.of(context).pop();
             },
             icon: const Icon(
               Icons.chevron_left_rounded,
@@ -91,7 +85,7 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    color: Color(AppColor.primaryButtonColor),
+                    color: Color(AppColor.primaryColor),
                   ),
                 ),
               ),
@@ -101,10 +95,10 @@ class _PhoneVerificationScreenState extends State<PhoneVerificationScreen> {
                     MaterialPageRoute(
                       builder: (context) => const LocationScreen(),
                     ),
-                    (route) => false,
+                    (route) => true,
                   );
                 },
-                backgroundColor: const Color(AppColor.primaryButtonColor),
+                backgroundColor: const Color(AppColor.primaryColor),
                 child: const Icon(Icons.chevron_right_rounded, size: 32),
               ),
             ],
