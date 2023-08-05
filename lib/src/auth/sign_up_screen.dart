@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_clone/src/auth/sign_in_screen.dart';
+import 'package:nectar_clone/src/home/home_screen.dart';
 import 'package:nectar_clone/src/utils/utils.dart';
 import 'package:nectar_clone/src/widgets/widgets.dart';
 
@@ -175,7 +177,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               const SizedBox(height: 30),
               ReusablePrimaryButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                    (route) => false,
+                  );
+                },
                 title: 'Sign Up',
               ),
               const SizedBox(height: 25),
@@ -192,7 +201,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   const SizedBox(width: 4),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => const SignInScreen(),
+                        ),
+                        (route) => false,
+                      );
+                    },
                     child: const Text(
                       'Sign In',
                       style: TextStyle(
