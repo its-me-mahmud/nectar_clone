@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_clone/src/home/home_screen.dart';
 import 'package:nectar_clone/src/utils/utils.dart';
 import 'package:nectar_clone/src/widgets/widgets.dart';
 
@@ -101,7 +102,14 @@ class LocationScreen extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               ReusablePrimaryButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                    (route) => false,
+                  );
+                },
                 title: 'Submit',
               ),
             ],

@@ -24,3 +24,7 @@ flutter:
   assets:
     - assets/icon/
     - assets/image/
+    - assets/image/fruit/
+    - assets/image/grocery/
+    - assets/image/meat/
+    - assets/image/vegetable/

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nectar_clone/src/auth/sign_up_screen.dart';
+import 'package:nectar_clone/src/home/home_screen.dart';
 import 'package:nectar_clone/src/utils/utils.dart';
 import 'package:nectar_clone/src/widgets/reusable_primary_button.dart';
 
@@ -117,7 +118,14 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               const SizedBox(height: 30),
               ReusablePrimaryButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                    (route) => false,
+                  );
+                },
                 title: 'Sign In',
               ),
               const SizedBox(height: 25),
